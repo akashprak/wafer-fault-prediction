@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wafer Fault Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgba(0, 0, 0, 0.76);
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .file-input {
+            margin: 20px 0;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #result-text {
+            margin-top: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Wafer Fault Detection</h1>
+        <form action="{{url_for('upload_files')}}" method="post" enctype="multipart/form-data">
+            <div class="file-input">
+                <input type="file" name="csvFiles" accept=".csv" multiple required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result-text">
+            {% if result %}
+            Prediction completed.
+            <a href="{{ result }}" download>Download Results</a>
+            
+            {% elif message %}
+            <p style="color: tomato; font-size: 16px;">{{ message }}</p>
+            <a href="{{ schema }}" style="font-size: 14px;">Download Schema</a>
+            
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
