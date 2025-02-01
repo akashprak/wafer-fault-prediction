@@ -23,5 +23,10 @@ A MySQL database is used to store and retrieve the training data using `sqlalche
 EDA is done on the merged dataset.  
 - sensor-columns with more than 70% null values is dropped
 - handled outliers
-- certail sensor values are constant for the entire training data, which is dropped.
-#### Data Transformation
+- certain sensor values are constant for the entire training data, which is dropped.
+### Data Transformation
+The training data is highly imbalanced. The (-1) values dominate the dataset.  
+The dataset is balanced using `SMOTE` oversampler in the `imblearn` library.  
+PCA is done on the balanced dataset.  
+Note: The trained model is still slightly overfitted since the Good wafer (1) group has very small number of values.
+### Clustering
