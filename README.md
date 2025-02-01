@@ -18,4 +18,10 @@ The dataset is validated for the following:
 - column names are as per the schema
 The validated datasets are then merged into a single dataframe and saved to csv file and to a MySQL database.
 ### Database
-A MySQL database is used to store and retrieve the training data using `sqlalchemy` library.
+A MySQL database is used to store and retrieve the training data using `sqlalchemy` library and `pymysql`.
+### EDA
+EDA is done on the merged dataset.  
+- sensor-columns with more than 70% null values is dropped
+- handled outliers
+- certail sensor values are constant for the entire training data, which is dropped.
+#### Data Transformation
