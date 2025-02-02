@@ -1,4 +1,4 @@
-from flask import Flask, request,  render_template, send_file, redirect, url_for
+from flask import Flask, request, Response, render_template, send_file, redirect, url_for
 from pathlib import Path
 from src.pipeline.prediction_pipeline import PredictionFileValidation,PredictionPipeline
 from src.utils import clear_directory
@@ -51,11 +51,19 @@ def upload_files():
 
 @app.route("/result")
 def result():
-    return send_file(prediction_result_filepath, as_attachment=True)
+    try:
+        return send_file(prediction_result_filepath, as_attachment=True)
+    
+    except FileNotFoundError:
+        return Response(f"Error: {FileNotFoundError}")
 
 @app.route(f"/artifacts/schema.json")
 def schema():
-    return send_file(schema_path, as_attachment=True)
+    try:
+        return send_file(schema_path, as_attachment=True)
+    
+    except FileNotFoundError:
+        return Response(f"Error: {FileNotFoundError}")
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=7000)
