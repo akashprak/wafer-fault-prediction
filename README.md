@@ -57,3 +57,10 @@ python src/training_pipeline.py
 ### Flask app
 ```
 python app.py
+```
+
+### Running Docker on local
+```
+docker build -t waferdefaultprediction .
+docker run -p 7000:7000 waferdefaultprediction
+```
