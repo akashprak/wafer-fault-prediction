@@ -64,3 +64,6 @@ python app.py
 docker build -t waferdefaultprediction:latest .
 docker run -p 7000:7000 waferdefaultprediction
 ```
+
+### Output page
+![](screenshots/output.png)
