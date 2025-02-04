@@ -61,6 +61,6 @@ python app.py
 
 ### Running Docker on local
 ```
-docker build -t waferdefaultprediction .
+docker build -t waferdefaultprediction:latest .
 docker run -p 7000:7000 waferdefaultprediction
 ```
