@@ -1,4 +1,5 @@
 from flask import Flask, request, Response, render_template, send_file, redirect, url_for
+import flask_monitoringdashboard as dashboard
 from pathlib import Path
 from src.pipeline.prediction_pipeline import PredictionFileValidation,PredictionPipeline
 from src.utils import clear_directory
@@ -65,5 +66,6 @@ def schema():
     except FileNotFoundError:
         return Response(f"Error: {FileNotFoundError}")
 
+dashboard.bind(app)
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=7000)

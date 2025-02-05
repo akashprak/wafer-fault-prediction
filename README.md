@@ -67,3 +67,6 @@ docker run -p 7000:7000 waferdefaultprediction
 
 ### Output page
 ![](screenshots/output.png)
+
+### Dashboard
+![](screenshots/dashboard.png)
